@@ -5,10 +5,10 @@
 <!-- learn css layout -->
   <div id="lay">
     <!-- <h1>blog {{laymsg}}</h1> -->
-    <div class="fitem">
+    <div id="mp">
       <MainPlant/>
     </div>
-    <div class="fitem">
+    <div id="calendar">
       <Calendar/>
     </div>
     <div class="fitem">
@@ -36,11 +36,14 @@ export default {
 </script>
 
 <style>
-  /* #lay {
-    display: flex;
-  } */
-  .fitem {
-    background-color: aquamarine;
-    display: inline;
+  #mp {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #calendar {
+    max-width: 400px;
+    max-height: 200px;
+    float: right;
+    margin: 0 0 1em 1em;
   }
 </style>

@@ -11,7 +11,5 @@
 </script>
 
 <style scoped>
-  /* #summary {
-    display: inline;
-  } */
+  
 </style>

@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">mainp</router-link> |
-      <router-link to="/home">Home</router-link> |
+    <el-menu :default-active="activeIndex" class="el-menu" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="0">json格式化</el-menu-item>
+      <el-menu-item index="1">时间戳转换</el-menu-item>
+      <el-menu-item index="2">About</el-menu-item>
+    </el-menu>
+    <!-- <div id="nav">
+      <router-link to="/">json格式化</router-link> |
+      <router-link to="/home">时间戳转换</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view/>
   </div>
   <!-- <div id="app">
@@ -17,6 +22,29 @@
   </div> -->
 </template>
 
+<script>
+  export default {
+    data() {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1',
+        menuList: [
+          '/',
+          '/home',
+          '/about'
+        ]
+      };
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(`key->[${key}], keyPath->[${keyPath}]`)
+        let menu = this.menuList[key];
+        this.$router.push(menu)
+      }
+    }
+  }
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -27,6 +55,11 @@
 }
 
 #nav {
-  background-color: aqua;
+  /* background-color: rgb(208, 229, 229); */
 }
+
+.el-menu{
+  padding-bottom: 0.5em;
+}
+
 </style>

@@ -2,16 +2,23 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Layout from '../views/Layout.vue'
+import JsonFormatter from '../views/JsonFormatter.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+    // {
+    //     path: '/',
+    //     name: 'Layout',
+    //     component: Layout,
+    //     props: {
+    //         laymsg: 'ccccddd'
+    //     }
+    // },
+    {
         path: '/',
         name: 'Layout',
-        component: Layout,
-        props: {
-            laymsg: 'ccccddd'
-        }
+        component: JsonFormatter
     },
     {
         path: '/home',
