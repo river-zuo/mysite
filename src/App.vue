@@ -4,6 +4,7 @@
       <el-menu-item index="0">json格式化</el-menu-item>
       <el-menu-item index="1">时间戳转换</el-menu-item>
       <el-menu-item index="2">About</el-menu-item>
+      <el-menu-item index="3">加解密</el-menu-item>
     </el-menu>
     <!-- <div id="nav">
       <router-link to="/">json格式化</router-link> |
@@ -26,12 +27,13 @@
   export default {
     data() {
       return {
-        activeIndex: '1',
+        activeIndex: '0',
         activeIndex2: '1',
         menuList: [
           '/',
           '/home',
-          '/about'
+          '/about',
+          '/secret',
         ]
       };
     },
@@ -46,16 +48,17 @@
 </script>
 
 <style>
-#app {
+
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
+} */
 
 #nav {
-  /* background-color: rgb(208, 229, 229); */
+  background-color: rgb(208, 229, 229);
 }
 
 .el-menu{

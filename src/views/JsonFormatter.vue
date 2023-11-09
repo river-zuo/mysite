@@ -16,31 +16,50 @@
     <div class="grid-content bg-purple">
       <el-button v-on:click="strMessageToJson">字符串json</el-button>
     </div>
+    <div v-if="textarea3 != ''" class="grid-content bg-purple">
+      <el-button v-on:click="useExt">{{content}}</el-button>
+    </div>
   </el-col>
   <el-col :span="11">
     <div class="grid-content bg-purple">
-      <el-input
+      <div v-if="!useExternal">
+        <el-input
       type="textarea"
       :autosize="{ minRows: 40}"
       placeholder="请输入内容"
       v-model="textarea3">
-  </el-input>
+      </el-input>
+      </div>
+      <div v-else>
+        <About :extern_data="this.textarea3"/>
+      </div>
     </div>
-    </el-col>
+  </el-col>
   </el-row>
   </div>
 </template>
 
 <script>
+import About from './About.vue'
 export default {
+  components: {
+    About
+  },
   name: 'JsonFormat',
   data() {
     return {
       textarea1: '',
-      textarea3: ''
+      textarea3: '',
+      useExternal: false,
+      textExt: `{"aa":1}`,
+      content: "使用JsonViewer"
     }
   },
   methods: {
+    useExt: function() {
+      this.useExternal = !this.useExternal
+      this.content = this.useExternal? "不使用JsonViewer" : "使用JsonViewer"
+    },
     reverseMessage: function () {
       let jsonP = JSON.parse(this.textarea1)
       this.textarea3 = JSON.stringify(jsonP, null, 4)
@@ -60,6 +79,17 @@ export default {
       }).then(resp => {
         let resp_data = resp.data
         this.textarea3 = JSON.stringify(resp_data, null, 4)
+      }).catch(error => console.log(`error => ${error}`))
+      // invoke 记录接口
+      this.axios({
+        url: '/hello',
+        method: 'get',
+        headers: {
+          'Content-Type': 'plain/text'
+        }
+      }).then(resp => {
+        let resp_data = resp.data
+        console.log(`data is ->  ${JSON.stringify(resp_data)}`)
       }).catch(error => console.log(`error => ${error}`))
       // // this.axios.get(`/api/aaa/cccc?json-str=111`)
       // .then(resp => {

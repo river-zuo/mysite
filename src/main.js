@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import JsonViewer from 'vue-json-viewer'
 
 
 // import tinymce from 'tinymce/tinymce'
@@ -15,6 +16,7 @@ import VueAxios from 'vue-axios'
 
 Vue.config.productionTip = false
 
+Vue.use(JsonViewer)
 Vue.use(ElementUI)
 Vue.use(VueAxios, axios)
 
